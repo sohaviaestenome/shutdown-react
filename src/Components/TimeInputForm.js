@@ -11,11 +11,12 @@ const TimeInputForm = () => {
     setTimeUnit(timeUnit === "minutes" ? "hours" : "minutes");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`Submitted time: ${timeValue} ${timeUnit}`);
-    // Send your command here
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const timeInMinutes = timeValue * (timeUnit === "hours" ? 60 : 1);
+    window.electron.send("schedule-shutdown", timeInMinutes);
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
