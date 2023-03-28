@@ -96,3 +96,39 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
     });
   });
 });
+
+
+//cancel shutdown functionality
+ipcMain.on("cancel-shutdown", () => {
+  let cancelShutdownCommand;
+
+  switch (process.platform) {
+    case "win32":
+      cancelShutdownCommand = "shutdown /a";
+      break;
+    case "darwin":
+      cancelShutdownCommand = "sudo killall shutdown";
+      break;
+    case "linux":
+      cancelShutdownCommand = "sudo shutdown -c";
+      break;
+    default:
+      console.error("Unsupported platform");
+      return;
+  }
+
+  console.log("Cancelling scheduled shutdown");
+
+  exec(cancelShutdownCommand, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error cancelling shutdown: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Cancelling shutdown stderr: ${stderr}`);
+      return;
+    }
+
+    console.log("Shutdown cancelled successfully");
+  });
+});

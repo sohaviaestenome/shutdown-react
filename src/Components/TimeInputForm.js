@@ -16,13 +16,17 @@ const TimeInputForm = () => {
     const timeInMinutes = timeValue * (timeUnit === "hours" ? 60 : 1);
     window.electron.send("schedule-shutdown", timeInMinutes);
   };
-  
+
+  const handleCancelShutdown = () => {
+    window.electron.send("cancel-shutdown");
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <TimeInput timeValue={timeValue} setTimeValue={setTimeValue} />
       <TimeToggle timeUnit={timeUnit} handleToggle={handleToggle} />
       <button type="submit">Send Command</button>
+      <button onClick={handleCancelShutdown}>Cancel Shutdown</button>
     </form>
   );
 };
