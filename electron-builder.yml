@@ -8,15 +8,10 @@ files:
   - public/**
   - package.json
   - node_modules/**
-publish:
-  provider: github
-  owner: your-github-username
-  repo: your-github-repo-name
-  token: your-github-personal-access-token
 mac:
   category: your.app.category
   icon: assets/icon.icns
-  target: ['dmg', 'zip']
+  target: ['dmg']
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extendInfo:
     LSUIElement: 1
@@ -25,14 +20,14 @@ mac:
       to: electron.js
 linux:
   icon: assets/icon.png
-  target: ['deb', 'rpm', 'AppImage', 'snap']
+  target: ['deb']
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extraResources:
     - from: public/electron.js
       to: electron.js
 win:
   icon: assets/icon.ico
-  target: ['nsis', 'msi', 'zip']
+  target: ['msi']
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extraResources:
     - from: public/electron.js

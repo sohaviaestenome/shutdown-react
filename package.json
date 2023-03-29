@@ -2,6 +2,7 @@
   "name": "my-electron-app",
   "version": "0.1.0",
   "private": true,
+  "homepage":"./",
   "main": "public/electron.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -28,7 +29,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "globals": {
+      "__webpack_public_path__": "writable"
+    }
   },
   "browserslist": {
     "production": [
