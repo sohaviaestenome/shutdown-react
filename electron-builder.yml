@@ -1,0 +1,31 @@
+appId: PS worldwide
+productName: Shutdown helper
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - build/**
+  - public/**
+  - public/electron.js
+  - package.json
+  - node_modules/**
+publish:
+  provider: github
+  owner: your-github-username
+  repo: your-github-repo-name
+  token: your-github-personal-access-token
+mac:
+  category: your.app.category
+  icon: assets/icon.icns
+  target: ['dmg', 'zip']
+  artifactName: "${productName}-${version}-${arch}.${ext}"
+  extendInfo:
+    LSUIElement: 1
+linux:
+  icon: assets/icon.png
+  target: ['deb', 'rpm', 'AppImage', 'snap']
+  artifactName: "${productName}-${version}-${arch}.${ext}"
+win:
+  icon: assets/icon.ico
+  target: ['nsis', 'msi']
+  artifactName: "${productName}-${version}-${arch}.${ext}"
