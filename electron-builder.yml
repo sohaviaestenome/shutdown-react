@@ -6,7 +6,6 @@ directories:
 files:
   - build/**
   - public/**
-  - public/electron.js
   - package.json
   - node_modules/**
 publish:
@@ -21,11 +20,20 @@ mac:
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extendInfo:
     LSUIElement: 1
+  extraResources:
+    - from: public/electron.js
+      to: electron.js
 linux:
   icon: assets/icon.png
   target: ['deb', 'rpm', 'AppImage', 'snap']
   artifactName: "${productName}-${version}-${arch}.${ext}"
+  extraResources:
+    - from: public/electron.js
+      to: electron.js
 win:
   icon: assets/icon.ico
-  target: ['nsis', 'msi']
+  target: ['nsis', 'msi', 'zip']
   artifactName: "${productName}-${version}-${arch}.${ext}"
+  extraResources:
+    - from: public/electron.js
+      to: electron.js
