@@ -1,4 +1,5 @@
 const { contextBridge, ipcRenderer } = require("electron");
+console.log('Preload script loaded');
 
 contextBridge.exposeInMainWorld("electron", {
   send: (channel, data) => {

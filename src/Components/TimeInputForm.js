@@ -9,6 +9,8 @@ const TimeInputForm = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    if (!window.electron) return;
+  
     const handleMessage = (event, msg) => {
       setMessage(msg);
     };
@@ -27,6 +29,7 @@ const TimeInputForm = () => {
       window.electron.remove("shutdown-cancel-success", handleMessage);
     };
   }, []);
+  
 
   const handleToggle = () => {
     setTimeUnit(timeUnit === "minutes" ? "hours" : "minutes");

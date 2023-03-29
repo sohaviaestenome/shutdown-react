@@ -5,6 +5,8 @@ const { exec } = require("child_process");
 
 dotenv.config();
 
+console.log('Preload path:', path.join(__dirname, 'preload.js'));
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
@@ -12,7 +14,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
-      preload: path.join(__dirname, "public/preload.js"),
+      preload: path.join(__dirname, '..', 'public', 'preload.js'),
     },
   });
 
