@@ -50,8 +50,10 @@ const TimeInputForm = () => {
       <form onSubmit={handleSubmit}>
         <TimeInput timeValue={timeValue} setTimeValue={setTimeValue} />
         <TimeToggle timeUnit={timeUnit} handleToggle={handleToggle} />
-        <button type="submit">Send Command</button>
-        <button onClick={handleCancelShutdown}>Cancel Shutdown</button>
+        <div>
+          <button type="submit">Shutdown</button>
+          <button onClick={handleCancelShutdown}>Cancel Shutdown</button>
+        </div>
       </form>
       <p>{message}</p>
     </div>
