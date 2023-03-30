@@ -17,6 +17,7 @@ const TimeInputForm = () => {
   
     window.electron.receive("shutdown-schedule-error", handleMessage);
     window.electron.receive("shutdown-schedule-stderr", handleMessage);
+    window.electron.receive("shutdown-schedule-success", handleMessage);
     window.electron.receive("shutdown-cancel-error", handleMessage);
     window.electron.receive("shutdown-cancel-stderr", handleMessage);
     window.electron.receive("shutdown-cancel-success", handleMessage);
@@ -24,6 +25,7 @@ const TimeInputForm = () => {
     return () => {
       window.electron.remove("shutdown-schedule-error", handleMessage);
       window.electron.remove("shutdown-schedule-stderr", handleMessage);
+      window.electron.remove("shutdown-schedule-success", handleMessage);
       window.electron.remove("shutdown-cancel-error", handleMessage);
       window.electron.remove("shutdown-cancel-stderr", handleMessage);
       window.electron.remove("shutdown-cancel-success", handleMessage);
