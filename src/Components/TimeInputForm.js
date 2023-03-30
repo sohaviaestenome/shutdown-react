@@ -9,26 +9,28 @@ const TimeInputForm = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (!window.electron) return;
-  
-    const handleMessage = (event, msg) => {
-      setMessage(msg);
+    const electron = window.electron;
+    if (!electron) return;
+
+    const handleMessage = (...args) => {
+    console.log("Renderer process - message received:", args);
+    setMessage(args[0]);
     };
-  
-    window.electron.receive("shutdown-schedule-error", handleMessage);
-    window.electron.receive("shutdown-schedule-stderr", handleMessage);
-    window.electron.receive("shutdown-schedule-success", handleMessage);
-    window.electron.receive("shutdown-cancel-error", handleMessage);
-    window.electron.receive("shutdown-cancel-stderr", handleMessage);
-    window.electron.receive("shutdown-cancel-success", handleMessage);
+
+    // window.electron.receive("shutdown-schedule-error", handleMessage);
+    // window.electron.receive("shutdown-schedule-stderr", handleMessage);
+    // window.electron.receive("shutdown-schedule-success", handleMessage);
+    // window.electron.receive("shutdown-cancel-error", handleMessage);
+    // window.electron.receive("shutdown-cancel-stderr", handleMessage);
+    // window.electron.receive("shutdown-cancel-success", handleMessage);
   
     return () => {
-      window.electron.remove("shutdown-schedule-error", handleMessage);
-      window.electron.remove("shutdown-schedule-stderr", handleMessage);
-      window.electron.remove("shutdown-schedule-success", handleMessage);
-      window.electron.remove("shutdown-cancel-error", handleMessage);
-      window.electron.remove("shutdown-cancel-stderr", handleMessage);
-      window.electron.remove("shutdown-cancel-success", handleMessage);
+      // window.electron.remove("shutdown-schedule-error", handleMessage);
+      // window.electron.remove("shutdown-schedule-stderr", handleMessage);
+      // window.electron.remove("shutdown-schedule-success", handleMessage);
+      // window.electron.remove("shutdown-cancel-error", handleMessage);
+      // window.electron.remove("shutdown-cancel-stderr", handleMessage);
+      // window.electron.remove("shutdown-cancel-success", handleMessage);
     };
   }, []);
   
