@@ -18,6 +18,8 @@ mac:
   extraResources:
     - from: public/electron.js
       to: electron.js
+    - from: public/shutdown_details.sh
+      to: shutdown_details.sh
 linux:
   icon: assets/icon.png
   target: ['deb']

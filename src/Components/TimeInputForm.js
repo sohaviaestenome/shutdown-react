@@ -11,14 +11,14 @@ const TimeInputForm = () => {
   useEffect(() => {
     const electron = window.electron;
     if (!electron) return;
-
-    const handleMessage = (...args) => {
-    console.log("Renderer process - message received:", args);
-    setMessage(args[0]);
+  
+    const handleMessage = (event, message) => {
+      console.log("Renderer process - message received:", message);
+      setMessage(message);
     };
-
-      electron.receive("Shutdown-schedule-sent", handleMessage);
-      electron.receive("Cancel shutdown", handleMessage);
+  
+    electron.receive("Shutdown-schedule-sent", handleMessage);
+    electron.receive("Cancel shutdown", handleMessage);
     // window.electron.receive("shutdown-schedule-error", handleMessage);
     // window.electron.receive("shutdown-schedule-stderr", handleMessage);
     // window.electron.receive("shutdown-schedule-success", handleMessage);
@@ -37,6 +37,7 @@ const TimeInputForm = () => {
       // window.electron.remove("shutdown-cancel-success", handleMessage);
     };
   }, []);
+  
   
 
   const handleToggle = () => {

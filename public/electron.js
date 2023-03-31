@@ -53,8 +53,8 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
       platformMessage = "Windows";
       break;
     case "darwin":
-      shutdownCommand = `shutdown -h +${timeInMinutes}`;
-      checkShutdownCommand = `shutdown -k now`; // Cancel the shutdown to check if it was scheduled
+      shutdownCommand = `sudo shutdown -h +${timeInMinutes}`;
+      checkShutdownCommand = `chmod +x shutdown_details.sh && ./shutdown_details.sh`;
       platformMessage = "macOS";
       break;
     case "linux":
