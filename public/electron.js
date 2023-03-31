@@ -53,12 +53,12 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
       platformMessage = "Windows";
       break;
     case "darwin":
-      shutdownCommand = `sudo shutdown -h +${timeInMinutes}`;
+      shutdownCommand = `shutdown -h +${timeInMinutes}`;
       checkShutdownCommand = `sudo shutdown -k now`; // Cancel the shutdown to check if it was scheduled
       platformMessage = "macOS";
       break;
     case "linux":
-      shutdownCommand = `sudo shutdown -h +${timeInMinutes}`;
+      shutdownCommand = `shutdown -h +${timeInMinutes}`;
       checkShutdownCommand = `shutdown --show`;
       platformMessage = "Linux";
       break;
@@ -68,7 +68,8 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
   }
 
   console.log(`Scheduling shutdown in ${timeInMinutes} minute(s) on ${platformMessage}`);
-
+  event.sender.send("Shutdown-schedule-sent",checkShutdownCommand);
+ 
   exec(shutdownCommand, (error, stdout, stderr) => {
     if (error) {
       event.sender.send("shutdown-schedule-error", error.message);
@@ -106,7 +107,7 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
 
 
 //cancel shutdown functionality
-ipcMain.on("cancel-shutdown", () => {
+ipcMain.on("cancel-shutdown", (event) => {
   let cancelShutdownCommand;
 
   switch (process.platform) {
@@ -125,6 +126,7 @@ ipcMain.on("cancel-shutdown", () => {
   }
 
   console.log("Cancelling scheduled shutdown");
+  event.sender.send('Cancel shutdown',"Cancelling scheduled shutdown");
 
   exec(cancelShutdownCommand, (error, stdout, stderr) => {
     if (error) {
