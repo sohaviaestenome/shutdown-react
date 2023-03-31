@@ -68,6 +68,7 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
   }
 
   console.log(`Scheduling shutdown in ${timeInMinutes} minute(s) on ${platformMessage}`);
+  event.sender.send("Shutdown-schedule-sent", 'successfull dude...');
  
   exec(shutdownCommand, (error, stdout, stderr) => {
     if (error) {
@@ -93,7 +94,7 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
   
         if (stdout) {
           event.sender.send("shutdown-schedule-success", `Shutdown scheduled successfully on ${platformMessage}`);
-          event.sender.send("Shutdown-schedule-sent", stdout);
+          // event.sender.send("Shutdown-schedule-sent", stdout);
         } else {
           event.sender.send("shutdown-schedule-error", `Shutdown not scheduled on ${platformMessage}`);
         }
@@ -131,13 +132,16 @@ ipcMain.on("cancel-shutdown", (event) => {
   exec(cancelShutdownCommand, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error cancelling shutdown: ${error.message}`);
+      event.sender.send('Cancel shutdown', error.message);
       return;
     }
     if (stderr) {
       console.error(`Cancelling shutdown stderr: ${stderr}`);
+      event.sender.send('Cancel shutdown', stderr);
       return;
     }
-
+  
     console.log("Shutdown cancelled successfully");
-  });
+    event.sender.send('Cancel shutdown', stdout || "Shutdown cancelled successfully");
+  });  
 });
