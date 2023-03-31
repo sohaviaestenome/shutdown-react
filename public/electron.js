@@ -54,7 +54,7 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
       break;
     case "darwin":
       shutdownCommand = `shutdown -h +${timeInMinutes}`;
-      checkShutdownCommand = `sudo shutdown -k now`; // Cancel the shutdown to check if it was scheduled
+      checkShutdownCommand = `shutdown -k now`; // Cancel the shutdown to check if it was scheduled
       platformMessage = "macOS";
       break;
     case "linux":
@@ -68,7 +68,6 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
   }
 
   console.log(`Scheduling shutdown in ${timeInMinutes} minute(s) on ${platformMessage}`);
-  event.sender.send("Shutdown-schedule-sent",checkShutdownCommand);
  
   exec(shutdownCommand, (error, stdout, stderr) => {
     if (error) {
@@ -94,6 +93,7 @@ ipcMain.on("schedule-shutdown", (event, timeInMinutes) => {
   
         if (stdout) {
           event.sender.send("shutdown-schedule-success", `Shutdown scheduled successfully on ${platformMessage}`);
+          event.sender.send("Shutdown-schedule-sent", stdout);
         } else {
           event.sender.send("shutdown-schedule-error", `Shutdown not scheduled on ${platformMessage}`);
         }
