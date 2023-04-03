@@ -23,7 +23,8 @@
     "electron-build": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist:windows": "electron-builder --windows"
   },
   "eslintConfig": {
     "extends": [
