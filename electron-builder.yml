@@ -29,7 +29,9 @@ linux:
       to: electron.js
 win:
   icon: assets/icon.ico
-  target: ['msi']
+  target:
+    - 'msi'
+    - 'portable'
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extraResources:
     - from: public/electron.js
