@@ -30,7 +30,6 @@ linux:
 win:
   icon: assets/icon.ico
   target:
-    - 'msi'
     - 'portable'
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extraResources:
