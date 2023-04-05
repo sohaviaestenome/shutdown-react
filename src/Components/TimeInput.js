@@ -5,7 +5,7 @@ const TimeInput = ({ timeValue, setTimeValue, timeUnit, placeholder }) => {
     <div>
       <input
         type="number"
-        placeholder={`Put time here in ${timeUnit}`}
+        placeholder={`Time in ${timeUnit}`}
         value={timeValue}
         onChange={(event) => setTimeValue(event.target.value)}
       />
