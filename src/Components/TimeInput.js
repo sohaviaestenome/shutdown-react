@@ -1,15 +1,15 @@
-// src/Components/TimeInput.js
 import React from "react";
 
-const TimeInput = ({ timeValue, setTimeValue }) => {
+const TimeInput = ({ timeValue, setTimeValue, timeUnit, placeholder }) => {
   return (
-    <input
-      type="number"
-      min="0"
-      value={timeValue}
-      onChange={(e) => setTimeValue(e.target.value)}
-      required
-    />
+    <div>
+      <input
+        type="number"
+        placeholder={`Put time here in ${timeUnit}`}
+        value={timeValue}
+        onChange={(event) => setTimeValue(event.target.value)}
+      />
+    </div>
   );
 };
 

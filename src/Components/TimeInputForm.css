@@ -1,0 +1,57 @@
+.time-input-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+  }
+  
+  .time-input-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .time-input-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  input[type="number"] {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    margin-right: 20px;
+    padding: 5px;
+  }
+  
+  button {
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    margin: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .toggle-button {
+    width: 140px;
+    background-color: blue;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+  }
+  
+  .shutdown-button {
+    width: auto;
+    margin-left: 20px;
+  }
+  

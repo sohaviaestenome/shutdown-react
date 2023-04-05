@@ -1,7 +1,7 @@
-// src/Components/TimeInputForm.js
 import React, { useState, useEffect } from "react";
 import TimeInput from "./TimeInput";
 import TimeToggle from "./TimeToggle";
+import "./TimeInputForm.css";
 
 const TimeInputForm = () => {
   const [timeUnit, setTimeUnit] = useState("minutes");
@@ -11,20 +11,20 @@ const TimeInputForm = () => {
   useEffect(() => {
     const electron = window.electron;
     if (!electron) return;
-  
+
     const handleMessage = (message) => {
       setMessage(message);
-    };    
-  
+    };
+
     electron.receive("Shutdown-schedule-sent", handleMessage);
     electron.receive("Cancel shutdown", handleMessage);
-  
+
     return () => {
       electron.remove("Shutdown-schedule-sent", handleMessage);
       electron.remove("Cancel shutdown", handleMessage);
     };
   }, []);
-  
+
   const handleToggle = () => {
     setTimeUnit(timeUnit === "minutes" ? "hours" : "minutes");
   };
@@ -40,17 +40,28 @@ const TimeInputForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <TimeInput timeValue={timeValue} setTimeValue={setTimeValue} />
-        <TimeToggle timeUnit={timeUnit} handleToggle={handleToggle} />
-        <button type="submit">Shutdown</button>
+    <div className="time-input-form-container">
+      <form className="time-input-form" onSubmit={handleSubmit}>
+        <div className="time-input-row">
+          <TimeInput
+            timeValue={timeValue}
+            setTimeValue={setTimeValue}
+            timeUnit={timeUnit}
+            placeholder={`Put time here in ${timeUnit}`}
+            className="time-input"
+          />
+          <TimeToggle
+            timeUnit={timeUnit}
+            handleToggle={handleToggle}
+            className="toggle-button"
+          />
+          <button type="submit" className="shutdown-button">Shutdown</button>
+        </div>
       </form>
-      <button onClick={handleCancelShutdown}>Cancel Shutdown</button>
-      <p>{message}</p>
+      <button onClick={handleCancelShutdown} className="cancel-button">Cancel Shutdown</button>
+      <p className="message">{message}</p>
     </div>
   );
 };
 
 export default TimeInputForm;
-
