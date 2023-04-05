@@ -22,7 +22,7 @@ mac:
       to: shutdown_details.sh
 linux:
   icon: assets/icon.png
-  target: ['portable']
+  target: ['deb']
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extraResources:
     - from: public/electron.js
