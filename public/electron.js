@@ -16,6 +16,7 @@ function createWindow() {
       contextIsolation: true,
       preload: path.join(__dirname, '..', 'public', 'preload.js'),
     },
+    title: "Shutdown Helper" 
   });
 
   const url =
