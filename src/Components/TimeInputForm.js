@@ -44,14 +44,13 @@ const TimeInputForm = () => {
       <form onSubmit={handleSubmit}>
         <TimeInput timeValue={timeValue} setTimeValue={setTimeValue} />
         <TimeToggle timeUnit={timeUnit} handleToggle={handleToggle} />
-        <div>
-          <button type="submit">Shutdown</button>
-          <button onClick={handleCancelShutdown}>Cancel Shutdown</button>
-        </div>
+        <button type="submit">Shutdown</button>
       </form>
+      <button onClick={handleCancelShutdown}>Cancel Shutdown</button>
       <p>{message}</p>
     </div>
   );
 };
 
 export default TimeInputForm;
+

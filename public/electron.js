@@ -119,7 +119,7 @@ ipcMain.on("cancel-shutdown", (event) => {
       cancelShutdownCommand = "sudo killall shutdown";
       break;
     case "linux":
-      cancelShutdownCommand = "sudo shutdown -c";
+      cancelShutdownCommand = "shutdown -c";
       break;
     default:
       console.error("Unsupported platform");
