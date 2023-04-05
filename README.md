@@ -1,7 +1,7 @@
-###Shutdown Helper
+# Shutdown Helper
 Shutdown Helper is an Electron app that allows you to schedule a shutdown for your computer regardless of the platform you're using (Windows, macOS, Linux). Additionally, you can also cancel existing scheduled shutdowns.
 
-##Installation
+## Installation
 To install Shutdown Helper, follow these steps:
 
 Download the appropriate installer for your operating system from the releases page.
@@ -15,7 +15,7 @@ Enter the desired time in the form. You can choose either minutes or hours.
 Click the "Shutdown" button.
 To cancel a scheduled shutdown click the "Cancel Shutdown" button.
 
-##Development
+## Development
 To set up the development environment for Shutdown Helper, follow these steps:
 
 Clone the repository.
