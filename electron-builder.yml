@@ -28,10 +28,14 @@ linux:
     - from: public/electron.js
       to: electron.js
 win:
-  icon: assets/icon.ico
+  icon: assets/CpuLightning.ico
   target:
     - 'portable'
   artifactName: "${productName}-${version}-${arch}.${ext}"
   extraResources:
     - from: public/electron.js
       to: electron.js
+nsis:
+  installerIcon: assets/CpuLightning.ico
+  uninstallerIcon: assets/CpuLightning.ico
+  installerHeaderIcon: assets/CpuLightning.ico

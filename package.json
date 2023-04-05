@@ -1,5 +1,6 @@
 {
   "name": "my-electron-app",
+  "productName": "Shutdown Helper",
   "version": "0.1.0",
   "private": true,
   "homepage":"./",
