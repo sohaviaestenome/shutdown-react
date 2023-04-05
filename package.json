@@ -24,7 +24,9 @@
     "postinstall": "electron-builder install-app-deps",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "dist:windows": "electron-builder --windows"
+    "dist:windows": "electron-builder --windows",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux"
   },
   "eslintConfig": {
     "extends": [
