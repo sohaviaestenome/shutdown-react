@@ -19,15 +19,15 @@ To cancel a scheduled shutdown click the "Cancel Shutdown" button.
 To set up the development environment for Shutdown Helper, follow these steps:
 
 Clone the repository.
-Install dependencies: npm install
-Start the app in development mode: npm start (starts react).
-Build the react part(frontend): npm run build.
-Start electron: npm run electron-start.
+Install dependencies: ***npm install***
+Start the app in development mode: ***npm start*** (starts react).
+Build the react part(frontend): ***npm run build***.
+Start electron: ***npm run electron-start***.
 To build the app for distribution, use the following command:
 
 sh
 Copy code
-npm run dist
+***npm run dist***
 This will create a distributable package for your operating system in the dist directory.
 
 License
