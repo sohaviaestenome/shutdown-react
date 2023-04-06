@@ -41,24 +41,26 @@ const TimeInputForm = () => {
 
   return (
     <div className="time-input-form-container">
-      <form className="time-input-form" onSubmit={handleSubmit}>
-        <div className="time-input-row">
-          <TimeInput
-            timeValue={timeValue}
-            setTimeValue={setTimeValue}
-            timeUnit={timeUnit}
-            placeholder={`Put time here in ${timeUnit}`}
-            className="time-input"
-          />
-          <TimeToggle
-            timeUnit={timeUnit}
-            handleToggle={handleToggle}
-            className="toggle-button"
-          />
+      <div className="time-input-row">
+        <TimeInput
+          timeValue={timeValue}
+          setTimeValue={setTimeValue}
+          timeUnit={timeUnit}
+          placeholder={`Put time here in ${timeUnit}`}
+          className="time-input"
+        />
+        <TimeToggle
+          timeUnit={timeUnit}
+          handleToggle={handleToggle}
+          className="toggle-button"
+        />
+      </div>
+      <div className="form-and-cancel-container">
+        <form className="time-input-form" onSubmit={handleSubmit}>
           <button type="submit" className="shutdown-button">Shutdown</button>
-        </div>
-      </form>
-      <button onClick={handleCancelShutdown} className="cancel-button">Cancel Shutdown</button>
+        </form>
+        <button onClick={handleCancelShutdown} className="cancel-button">Cancel Shutdown</button>
+      </div>
       <p className="message">{message}</p>
     </div>
   );
